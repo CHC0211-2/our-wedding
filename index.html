@@ -2,51 +2,208 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <!-- 모바일 기기에서 화면 비율을 맞추기 위한 필수 태그 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>저희 결혼합니다</title>
+    <title>OUR WEDDING INVITATION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@300;400;600&family=Pretendard:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* 기본 스타일 초기화 및 폰트 설정 */
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-            background-color: #f4f4f4; /* PC에서 배경과 구분되도록 약간 회색 */
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #1a1a1a; /* 레퍼런스의 깊이감 있는 다크톤 배경 */
+            color: #2b2b2b;
+            line-height: 1.6;
+        }
+
+        /* 모바일 화면 컨테이너 (폰 화면 비율) */
+        .mobile-container {
+            max-width: 430px;
+            margin: 0 auto;
+            background-color: #f7f5f0; /* 따뜻하고 고급스러운 아이보리 카드 톤 */
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 섹션 공통 스타일 (카드 느낌의 여백) */
+        section {
+            padding: 70px 28px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #8c8275;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* 1. 메인 커버 섹션 */
+        .main-cover {
+            padding: 60px 24px 50px 24px;
+        }
+
+        .main-top-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .main-photo-frame {
+            width: 100%;
+            height: 440px;
+            background-color: #e3ded6;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .main-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-title-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .main-names {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
             color: #333;
         }
 
-        /* 모바일 화면 크기에 맞춘 컨테이너 */
-        .mobile-container {
-            max-width: 430px; /* 일반적인 스마트폰 최대 너비 */
-            margin: 0 auto; /* 화면 중앙 정렬 */
-            background-color: #ffffff;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* 약간의 그림자 효과 */
-            overflow-x: hidden;
+        .main-date-venue {
+            font-size: 13.5px;
+            color: #666;
+            letter-spacing: 1px;
         }
 
-        /* 각 섹션(메인, 인사말, 갤러리 등)의 기본 간격 */
-        section {
-            padding: 60px 20px;
+        /* 2. 인사말 섹션 */
+        .greeting h2 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 19px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .greeting-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        /* 3. 캘린더(날짜) 섹션 */
+        .calendar-box {
+            margin-top: 20px;
+            background: #fff;
+            padding: 25px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .calendar-month {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .calendar-table th {
+            padding: 8px 0;
+            font-weight: 400;
+            color: #999;
+        }
+
+        .calendar-table td {
+            padding: 8px 0;
             text-align: center;
         }
 
-        /* 임시 메인 커버 스타일 */
-        .main-cover {
-            background-color: #faf5f0; /* 따뜻한 베이지톤 */
-            padding: 100px 20px;
+        /* 예식일 동그라미 강조 */
+        .wedding-day {
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
-        
-        .main-title {
-            font-size: 24px;
-            font-weight: 300;
-            margin-bottom: 10px;
-        }
-        
-        .main-date {
-            font-size: 16px;
+
+        .d-day-text {
+            margin-top: 20px;
+            font-size: 13px;
             color: #777;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+        }
+
+        /* 4. 갤러리 섹션 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .gallery-item {
+            height: 190px;
+            background-color: #e3ded6;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* 푸터 봉투 감성 */
+        .invitation-footer {
+            padding: 50px 20px;
+            background-color: #f1ede4;
+            text-align: center;
+        }
+
+        .envelope-icon {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #7a7065;
         }
     </style>
 </head>
@@ -54,36 +211,73 @@
 
     <div class="mobile-container">
         
-        <!-- 1. 메인 커버 섹션 -->
-        <section class="main-cover" id="cover">
-            <h1 class="main-title">신랑이름 & 신부이름</h1>
-            <p class="main-date">2026. 10. 24. SAT PM 12:30</p>
-            <!-- 향후 여기에 메인 웨딩 사진이 들어갈 자리입니다 -->
+        <section class="main-cover">
+            <p class="main-top-title">WE ARE GETTING MARRIED</p>
+            <div class="main-photo-frame">
+                <span>MAIN WEDDING PHOTO</span>
+            </div>
+            <h1 class="main-title-text">Our Special Day</h1>
+            <p class="main-names">김민수 &middot; 이서연</p>
+            <p class="main-date-venue">2026. 10. 24. SAT PM 12:30<br>더 아테네홀 3층 그랜드볼룸</p>
         </section>
 
-        <!-- 2. 초대 인사말 섹션 -->
-        <section class="greeting" id="greeting">
-            <h2>초대합니다</h2>
-            <p>서로를 마주 보며 다져온 사랑을<br>이제 함께 한 곳을 바라보며 걸어가려 합니다.<br><br>저희 두 사람이 사랑의 이름으로<br>지켜나갈 수 있도록 앞날을 축복해 주시면<br>감사하겠습니다.</p>
+        <section class="greeting">
+            <p class="section-tag">INEXEPOD</p>
+            <h2>소중한 분들을 초대합니다</h2>
+            <p class="greeting-text">
+                서로를 마주 보며 다져온 사랑을<br>
+                이제 함께 한 곳을 바라보며 걸어가려 합니다.<br><br>
+                저희 두 사람이 사랑의 이름으로<br>
+                지켜나갈 수 있도록 앞날을 축복해 주시면<br>
+                더 없는 기쁨으로 간직하겠습니다.
+            </p>
         </section>
 
-        <!-- 3. 사진 갤러리 섹션 (추후 스와이프 기능 구현) -->
-        <section class="gallery" id="gallery">
-            <h2>Gallery</h2>
-            <p>아름다운 순간들</p>
+        <section class="calendar-section">
+            <p class="section-tag">DATE</p>
+            <h2>예식일 안내</h2>
+            <div class="calendar-box">
+                <div class="calendar-month">December 2026</div>
+                <table class="calendar-table">
+                    <tr>
+                        <th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+                    </tr>
+                    <tr>
+                        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+                    </tr>
+                    <tr>
+                        <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+                    </tr>
+                    <tr>
+                        <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+                    </tr>
+                    <tr>
+                        <td>22</td><td>23</td>
+                        <td><div class="wedding-day">24</div></td>
+                        <td>25</td><td>26</td><td>27</td><td>28</td>
+                    </tr>
+                    <tr>
+                        <td>29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td>
+                    </tr>
+                </table>
+                <p class="d-day-text">결혼일까지 138일 남았습니다.</p>
+            </div>
         </section>
 
-        <!-- 4. 오시는 길 섹션 (추후 지도 API 연동) -->
-        <section class="location" id="location">
-            <h2>오시는 길</h2>
-            <p>웨딩홀 이름 및 주소</p>
+        <section class="gallery">
+            <p class="section-tag">GALLERY</p>
+            <h2>우리의 순간들</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">Photo 1</div>
+                <div class="gallery-item">Photo 2</div>
+                <div class="gallery-item">Photo 3</div>
+                <div class="gallery-item">Photo 4</div>
+            </div>
         </section>
 
-        <!-- 5. 마음 전하실 곳 (추후 계좌번호 복사 기능 구현) -->
-        <section class="account" id="account">
-            <h2>마음 전하실 곳</h2>
-            <p>축의금 계좌 안내</p>
-        </section>
+        <div class="invitation-footer">
+            <p class="envelope-icon">EVE HOLIDAY &middot; WITH LOVE</p>
+        </div>
 
     </div>
 
