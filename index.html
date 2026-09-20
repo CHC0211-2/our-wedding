@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OUR WEDDING INVITATION</title>
+    <!-- 구글 폰트: 우아한 필기체와 세리프체 적용 -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -306,7 +307,7 @@
             letter-spacing: 1px;
         }
 
-        .form-group input, .form-group select {
+        .form-group input {
             width: 100%;
             padding: 12px 14px;
             background-color: #161616;
@@ -318,7 +319,7 @@
             outline: none;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus {
             border-color: #fff;
         }
 
@@ -368,6 +369,7 @@
 </head>
 <body>
 
+    <!-- ✉️ 봉투 열기 오버레이 -->
     <div id="intro-overlay">
         <div class="envelope-container" onclick="openInvitation()">
             <div class="envelope-box">
@@ -377,8 +379,10 @@
         </div>
     </div>
 
+    <!-- 🖤 메인 청첩장 컨테이너 -->
     <div class="mobile-container" id="main-content">
         
+        <!-- 1. 메인 커버 -->
         <section class="main-cover">
             <p class="section-tag">WEDDING INVITATION</p>
             <div class="photo-frame">
@@ -389,6 +393,7 @@
             <p class="main-date-venue">2026. 10. 24. SAT PM 12:30<br>더 아테네홀 3층 그랜드볼룸</p>
         </section>
 
+        <!-- 2. 초대 인사말 -->
         <section class="greeting">
             <p class="section-tag">GREETING</p>
             <h2>소중한 분들을 초대합니다</h2>
@@ -401,6 +406,7 @@
             </p>
         </section>
 
+        <!-- 3. 날짜 및 캘린더 -->
         <section class="calendar-section">
             <p class="section-tag">DATE</p>
             <h2>예식일 안내</h2>
@@ -432,6 +438,7 @@
             </div>
         </section>
 
+        <!-- 4. 갤러리 -->
         <section class="gallery">
             <p class="section-tag">GALLERY</p>
             <h2>우리의 순간들</h2>
@@ -443,6 +450,7 @@
             </div>
         </section>
 
+        <!-- 5. 참석 여부 조사 (RSVP) 섹션 -->
         <section class="rsvp-section">
             <div class="rsvp-header">
                 <p class="section-tag">R.S.V.P</p>
@@ -453,6 +461,7 @@
                 따뜻한 마음으로 참석을 회신해 주시면 정성을 다해 준비하겠습니다. 고맙습니다.
             </p>
 
+            <!-- 실제 설문 입력 폼 -->
             <form class="rsvp-form" onsubmit="submitRsvp(event)">
                 <div class="form-group">
                     <label>성함</label>
@@ -477,19 +486,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label>동행 인원 (본인 포함)</label>
-                    <select id="guestCount">
-                        <option value="1">본인 1명</option>
-                        <option value="2">총 2명 (동반 1인 포함)</option>
-                        <option value="3">총 3명</option>
-                        <option value="4">총 4명 이상 (가족 등)</option>
-                    </select>
+                    <label>동행 인원 (숫자로 입력, 본인 포함 시 총 인원)</label>
+                    <input type="number" id="guestCount" value="1" min="1" max="10" required>
                 </div>
 
                 <button type="submit" class="rsvp-submit-btn">참석 여부 보내기</button>
             </form>
         </section>
 
+        <!-- 푸터 -->
         <footer>
             <p>WITH LOVE, FOREVER</p>
         </footer>
@@ -510,12 +515,11 @@
             mainContent.classList.add('show');
         }
 
-        // 구글 시트 연동 참석 여부 제출 함수
+        // 새로 발급받은 구글 시트 연동 참석 여부 제출 함수
         function submitRsvp(event) {
             event.preventDefault();
             
-            // 발급받은 구글 웹 앱 URL
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzoeJoQLNwdblj4-f8ULN7hdKfjuQ9aEds5ZNaFdRAuSvU3xit6Aa5BmGluBtT61WX0lQ/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzrttjk2qGNaIHqGWVvAwooAr9t6DbaBYC2mrOcceMzQit-0d5_l6iBr_JdIfEImXRvNg/exec';
             
             const name = document.getElementById('guestName').value;
             const phone = document.getElementById('guestPhone').value;
